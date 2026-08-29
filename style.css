@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f7;
+    color: #1f2937;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+.app {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    margin: auto;
+    background: #f8fafc;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.screen {
+    display: none;
+    padding: 22px 18px 100px;
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: block;
+}
+
+
+/* HEADER */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small-text {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.header h1 {
+    font-size: 27px;
+}
+
+.header h1 span {
+    color: #2563eb;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    background: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+
+/* HERO */
+
+.hero {
+    margin: 25px 0 20px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #64748b;
+    line-height: 1.5;
+}
+
+
+/* CARDS */
+
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+}
+
+.planner-card label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 14px 0 7px;
+}
+
+.planner-card input,
+.planner-card select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    outline: none;
+    background: white;
+}
+
+.planner-card input:focus,
+.planner-card select:focus {
+    border-color: #2563eb;
+}
+
+
+/* INTERESTS */
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.interest {
+    padding: 12px 8px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.active-interest {
+    background: #dbeafe;
+    border: 1px solid #2563eb;
+}
+
+
+/* BUTTON */
+
+.primary-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 14px;
+    margin-top: 18px;
+    background: #2563eb;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* TOP BAR */
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.top-bar h2 {
+    font-size: 21px;
+}
+
+.back-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: white;
+    font-size: 20px;
+}
+
+
+/* TRIP */
+
+.trip-summary {
+    background: #eff6ff;
+}
+
+.trip-summary p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.trip-summary h2 {
+    margin: 5px 0 18px;
+}
+
+.summary-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.summary-row div {
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.summary-row small {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.summary-row strong {
+    font-size: 12px;
+}
+
+
+/* SECTION */
+
+.section-title {
+    font-size: 17px;
+    margin: 22px 0 12px;
+}
+
+
+/* ITINERARY */
+
+.day-card {
+    background: white;
+    border-radius: 17px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+}
+
+.day-card h3 {
+    margin-bottom: 13px;
+}
+
+.activity {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.activity:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.activity p {
+    font-size: 11px;
+    color: #64748b;
+}
+
+
+/* COST */
+
+.cost-card h3 {
+    margin-bottom: 15px;
+}
+
+.cost-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #475569;
+    font-size: 14px;
+}
+
+.cost-row.total {
+    color: #111827;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* EXPLORE */
+
+.search-box {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: white;
+    border-radius: 13px;
+    padding: 13px;
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+
+.place-card {
+    display: flex;
+    background: white;
+    border-radius: 17px;
+    overflow: hidden;
+    margin-bottom: 13px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+}
+
+.place-image {
+    width: 115px;
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+}
+
+.temple {
+    background: #fef3c7;
+}
+
+.beach {
+    background: #dbeafe;
+}
+
+.place-info {
+    padding: 14px;
+    flex: 1;
+}
+
+.place-info h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.place-info p {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.place-info span {
+    font-size: 12px;
+}
+
+.place-info button {
+    display: block;
+    margin-top: 10px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+}
+
+
+.hidden-gem {
+    display: flex;
+    gap: 13px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.hidden-gem > span {
+    font-size: 28px;
+}
+
+.hidden-gem h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.hidden-gem p {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+
+/* HOTELS */
+
+.page-description {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.hotel-card {
+    display: flex;
+    gap: 13px;
+    background: white;
+    border-radius: 17px;
+    padding: 14px;
+    margin-bottom: 13px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+}
+
+.hotel-icon {
+    width: 70px;
+    height: 80px;
+    border-radius: 13px;
+    background: #e0f2fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.hotel-details {
+    flex: 1;
+}
+
+.hotel-details h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.hotel-details p {
+    color: #64748b;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.hotel-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 9px;
+}
+
+.hotel-bottom strong {
+    font-size: 13px;
+}
+
+.hotel-bottom button {
+    padding: 7px 11px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* SAFETY */
+
+.safety-card {
+    background: white;
+    text-align: center;
+    border-radius: 22px;
+    padding: 25px 18px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+}
+
+.shield {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.safety-card h2 {
+    margin-bottom: 8px;
+}
+
+.safety-card p {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.sos-btn {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin-top: 25px;
+    background: #dc2626;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+}
+
+.safety-options {
+    margin-top: 18px;
+}
+
+.safety-options button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background: white;
+}
+
+.safety-options button > span {
+    font-size: 25px;
+}
+
+.safety-options strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.safety-options small {
+    color: #64748b;
+    font-size: 10px;
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 430px;
+    height: 70px;
+    background: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #e5e7eb;
+    z-index: 10;
+}
+
+.bottom-nav button {
+    background: white;
+    color: #64748b;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.bottom-nav button span {
+    font-size: 21px;
+}
+
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 85px;
+    transform: translateX(-50%) translateY(20px);
+    background: #111827;
+    color: white;
+    padding: 12px 17px;
+    border-radius: 12px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 20;
+    width: max-content;
+    max-width: 90%;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 700px) {
+    .app {
+        margin-top: 20px;
+        min-height: calc(100vh - 40px);
+        border-radius: 25px;
+        box-shadow: 0 15px 50px rgba(15, 23, 42, 0.15);
+    }
+
+    .bottom-nav {
+        margin-left: 0;
+    }
+}

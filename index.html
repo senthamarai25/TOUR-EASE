@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourEase AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HOME SCREEN -->
+    <section id="home" class="screen active">
+
+        <header class="header">
+            <div>
+                <p class="small-text">Welcome to</p>
+                <h1>TourEase <span>AI</span></h1>
+            </div>
+            <div class="logo">✈️</div>
+        </header>
+
+        <div class="hero">
+            <h2>Travel smarter.<br>Explore better.</h2>
+            <p>Plan your perfect trip based on your budget, time and interests.</p>
+        </div>
+
+        <div class="card planner-card">
+
+            <label>📍 Destination</label>
+            <input id="destination" type="text" placeholder="e.g. Thanjavur">
+
+            <label>💰 Budget</label>
+            <input id="budget" type="number" placeholder="e.g. 5000">
+
+            <label>📅 Number of Days</label>
+            <select id="days">
+                <option value="1">1 Day</option>
+                <option value="2" selected>2 Days</option>
+                <option value="3">3 Days</option>
+                <option value="4">4 Days</option>
+                <option value="5">5 Days</option>
+            </select>
+
+            <label>❤️ Your Interest</label>
+            <div class="interest-grid">
+                <button class="interest active-interest" data-interest="Culture">🏛️ Culture</button>
+                <button class="interest" data-interest="Food">🍛 Food</button>
+                <button class="interest" data-interest="Nature">🌿 Nature</button>
+                <button class="interest" data-interest="Adventure">🏕️ Adventure</button>
+            </div>
+
+            <button class="primary-btn" onclick="generateTrip()">
+                ✨ PLAN MY TRIP
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRIP PLAN SCREEN -->
+    <section id="trip" class="screen">
+
+        <div class="top-bar">
+            <button class="back-btn" onclick="showScreen('home')">←</button>
+            <h2>AI Trip Plan</h2>
+            <span>🤖</span>
+        </div>
+
+        <div class="trip-summary card">
+            <p>Your personalized trip to</p>
+            <h2 id="tripDestination">Thanjavur</h2>
+
+            <div class="summary-row">
+                <div>
+                    <small>Budget</small>
+                    <strong id="tripBudget">₹5,000</strong>
+                </div>
+
+                <div>
+                    <small>Duration</small>
+                    <strong id="tripDays">2 Days</strong>
+                </div>
+
+                <div>
+                    <small>Interest</small>
+                    <strong id="tripInterest">Culture</strong>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title">🗓️ Suggested Itinerary</h3>
+
+        <div id="itinerary"></div>
+
+        <div class="card cost-card">
+            <h3>💰 Estimated Trip Cost</h3>
+
+            <div class="cost-row">
+                <span>🏨 Hotel</span>
+                <span id="hotelCost">₹1,800</span>
+            </div>
+
+            <div class="cost-row">
+                <span>🚌 Transport</span>
+                <span id="transportCost">₹1,000</span>
+            </div>
+
+            <div class="cost-row">
+                <span>🍛 Food</span>
+                <span id="foodCost">₹800</span>
+            </div>
+
+            <div class="cost-row">
+                <span>🎟️ Tickets</span>
+                <span id="ticketCost">₹400</span>
+            </div>
+
+            <hr>
+
+            <div class="cost-row total">
+                <span>Total</span>
+                <span id="totalCost">₹4,000</span>
+            </div>
+        </div>
+
+        <button class="primary-btn" onclick="showScreen('explore')">
+            🔎 EXPLORE MORE
+        </button>
+
+    </section>
+
+
+    <!-- EXPLORE SCREEN -->
+    <section id="explore" class="screen">
+
+        <div class="top-bar">
+            <button class="back-btn" onclick="showScreen('trip')">←</button>
+            <h2>Explore</h2>
+            <span>🧭</span>
+        </div>
+
+        <div class="search-box">
+            🔍
+            <input type="text" placeholder="Search places...">
+        </div>
+
+        <h3 class="section-title">🔥 Popular Places</h3>
+
+        <div class="place-card">
+            <div class="place-image temple">🏛️</div>
+            <div class="place-info">
+                <h3>Brihadisvara Temple</h3>
+                <p>📍 Thanjavur</p>
+                <span>⭐ 4.8</span>
+                <button onclick="showDetails('Brihadisvara Temple')">View Details</button>
+            </div>
+        </div>
+
+        <div class="place-card">
+            <div class="place-image beach">🏖️</div>
+            <div class="place-info">
+                <h3>Marina Beach</h3>
+                <p>📍 Chennai</p>
+                <span>⭐ 4.5</span>
+                <button onclick="showDetails('Marina Beach')">View Details</button>
+            </div>
+        </div>
+
+        <h3 class="section-title">💎 Hidden Gems</h3>
+
+        <div class="hidden-gem">
+            <span>🌿</span>
+            <div>
+                <h3>Local Village Experience</h3>
+                <p>Discover local culture, food and traditional activities.</p>
+            </div>
+        </div>
+
+        <div class="hidden-gem">
+            <span>🍛</span>
+            <div>
+                <h3>Authentic Local Food</h3>
+                <p>Find small local restaurants and traditional dishes.</p>
+            </div>
+        </div>
+
+        <button class="primary-btn" onclick="showScreen('hotels')">
+            🏨 FIND HOTELS
+        </button>
+
+    </section>
+
+
+    <!-- HOTELS SCREEN -->
+    <section id="hotels" class="screen">
+
+        <div class="top-bar">
+            <button class="back-btn" onclick="showScreen('explore')">←</button>
+            <h2>Hotels</h2>
+            <span>🏨</span>
+        </div>
+
+        <p class="page-description">
+            Recommended hotels based on your budget.
+        </p>
+
+        <div class="hotel-card">
+            <div class="hotel-icon">🏨</div>
+
+            <div class="hotel-details">
+                <h3>Royal Heritage Hotel</h3>
+                <p>📍 1.2 km from city centre</p>
+                <p>⭐ 4.5 • Free Wi-Fi • Breakfast</p>
+
+                <div class="hotel-bottom">
+                    <strong>₹1,200/night</strong>
+                    <button onclick="bookHotel('Royal Heritage Hotel')">
+                        BOOK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <div class="hotel-icon">🏨</div>
+
+            <div class="hotel-details">
+                <h3>Green View Stay</h3>
+                <p>📍 2.0 km from city centre</p>
+                <p>⭐ 4.2 • Parking • Restaurant</p>
+
+                <div class="hotel-bottom">
+                    <strong>₹900/night</strong>
+                    <button onclick="bookHotel('Green View Stay')">
+                        BOOK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <div class="hotel-icon">🏠</div>
+
+            <div class="hotel-details">
+                <h3>Budget Homestay</h3>
+                <p>📍 2.5 km from city centre</p>
+                <p>⭐ 4.4 • Local Experience</p>
+
+                <div class="hotel-bottom">
+                    <strong>₹700/night</strong>
+                    <button onclick="bookHotel('Budget Homestay')">
+                        BOOK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- SAFETY SCREEN -->
+    <section id="safety" class="screen">
+
+        <div class="top-bar">
+            <button class="back-btn" onclick="showScreen('home')">←</button>
+            <h2>Tourist Safety</h2>
+            <span>🛡️</span>
+        </div>
+
+        <div class="safety-card">
+
+            <div class="shield">🛡️</div>
+
+            <h2>Stay Safe While Travelling</h2>
+
+            <p>
+                Quick access to emergency services and location sharing.
+            </p>
+
+            <button class="sos-btn" onclick="emergencyAlert()">
+                🚨 SOS
+            </button>
+
+        </div>
+
+        <div class="safety-options">
+
+            <button onclick="shareLocation()">
+                <span>📍</span>
+                <div>
+                    <strong>Share Live Location</strong>
+                    <small>Share your location with family</small>
+                </div>
+            </button>
+
+            <button onclick="showContact('Hospital')">
+                <span>🏥</span>
+                <div>
+                    <strong>Nearby Hospital</strong>
+                    <small>Find emergency medical help</small>
+                </div>
+            </button>
+
+            <button onclick="showContact('Police Station')">
+                <span>👮</span>
+                <div>
+                    <strong>Police Station</strong>
+                    <small>Get help from local police</small>
+                </div>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <nav class="bottom-nav">
+
+        <button onclick="showScreen('home')">
+            <span>🏠</span>
+            Home
+        </button>
+
+        <button onclick="showScreen('explore')">
+            <span>🧭</span>
+            Explore
+        </button>
+
+        <button onclick="showScreen('hotels')">
+            <span>🏨</span>
+            Hotels
+        </button>
+
+        <button onclick="showScreen('safety')">
+            <span>🛡️</span>
+            Safety
+        </button>
+
+    </nav>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
